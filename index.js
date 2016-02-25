@@ -52,7 +52,10 @@ Elixir.extend('stylus', function(src, output, options) {
  * @return {object}
  */
 var prepGulpPaths = function(src, output) {
+    var baseName = src.split('.')[0];
+
+    output = output || config.get('public.css.outputFolder');
     return new Elixir.GulpPaths()
         .src(src, config.get('assets.css.stylus.folder'))
-        .output(output || config.get('public.css.outputFolder'), 'app.css');
+        .output(output, baseName + '.css');
 };
